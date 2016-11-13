@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bank;
+package pl.lodz.uni.math.bank;
 
 import java.util.Date;
 
@@ -24,6 +24,7 @@ public class WipeOut extends Transaction{
         this.date=date;
         this.description=description;
     }
-    
-    
+    public static void DoTransaction(Transaction wipeOut,Account account){
+        //TODO
+    }
 }

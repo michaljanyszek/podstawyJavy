@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bank;
+package pl.lodz.uni.math.bank;
 
 import java.util.Date;
 
@@ -11,9 +11,8 @@ import java.util.Date;
  *
  * @author Stud
  */
-public abstract class Transaction {
+public abstract class Transaction{
     protected double amount;
     protected Date date;
-    protected String description;
-    protected void doTransaction(){}
+    protected String description;        
 }

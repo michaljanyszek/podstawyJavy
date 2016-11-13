@@ -3,13 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/micha/Documents/Source/Repos/podstawyJava/Bank/src/bank/Deposit.java</file>
-            <file>file:/C:/Users/micha/Documents/Source/Repos/podstawyJava/Bank/src/bank/Transaction.java</file>
-            <file>file:/C:/Users/micha/Documents/Source/Repos/podstawyJava/Bank/src/bank/Main.java</file>
-            <file>file:/C:/Users/micha/Documents/Source/Repos/podstawyJava/Bank/src/bank/Client.java</file>
-            <file>file:/C:/Users/micha/Documents/Source/Repos/podstawyJava/Bank/src/bank/Bank.java</file>
-            <file>file:/C:/Users/micha/Documents/Source/Repos/podstawyJava/Bank/src/bank/Account.java</file>
-            <file>file:/C:/Users/micha/Documents/Source/Repos/podstawyJava/Bank/src/bank/Check.java</file>
+            <file>file:/C:/Users/micha/Documents/Source/Repos/podstawyJavy/Bank/src/bank/Bank.java</file>
+            <file>file:/C:/Users/micha/Documents/Source/Repos/podstawyJavy/Bank/src/bank/Client.java</file>
+            <file>file:/C:/Users/micha/Documents/Source/Repos/podstawyJavy/Bank/src/bank/Account.java</file>
+            <file>file:/C:/Users/micha/Documents/Source/Repos/podstawyJavy/Bank/src/bank/Common.java</file>
+            <file>file:/C:/Users/micha/Documents/Source/Repos/podstawyJavy/Bank/src/bank/Main.java</file>
         </group>
     </open-files>
 </project-private>

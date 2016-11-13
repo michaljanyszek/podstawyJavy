@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bank;
+package pl.lodz.uni.math.bank;
 
 import java.util.Date;
 
@@ -19,6 +19,16 @@ public class Deposit extends Transaction {
         this.amount=amount;
         this.date=date;
         this.description=description;
+    }
+    
+    public static void DoTransaction(Transaction deposit,Account toAccount){
+        toAccount.IncreaseAmount(deposit.amount);
+        toAccount.AddToHistory(deposit);
+    }
+
+    @Override
+    public String toString() {
+        return "Deposit{" + "fromAccount=" + fromAccount +" Amount:"+amount+" Date:"+date+" Description:"+description+ '}';
     }
     
 }

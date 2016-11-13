@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bank;
+package pl.lodz.uni.math.bank;
 
 import java.util.ArrayList;
 
@@ -20,13 +20,17 @@ public class Client {
     public Client(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
+        accounts=new ArrayList<>();
     }
-    public void addAcount(Account account){
-        this.accounts.add(account);
+    public void AddAcount(Account account){
+        if(!accounts.contains(account))
+            accounts.add(account);
     }
     public String getName(){
         return firstName + " " + lastName;
     }
-    
+    public ArrayList<Account> GetAccounts(){
+        return accounts;
+    }
 }
 

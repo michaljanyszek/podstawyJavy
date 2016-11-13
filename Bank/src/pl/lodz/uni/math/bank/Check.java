@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bank;
+package pl.lodz.uni.math.bank;
 
 import java.util.Date;
 
@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author Stud
  */
-public class Check extends Transaction {
+public class Check extends Transaction{
     private Account toAccount;
     
     public Check(Account account,double amount,Date date,String description){
@@ -20,4 +20,14 @@ public class Check extends Transaction {
         this.date=date;
         this.description=description;
     }
+    public static void DoTransaction(Transaction check,Account sourceAccount){
+        sourceAccount.DecreaseAmount(check.amount);
+        sourceAccount.AddToHistory(check);
+    }
+
+    @Override
+    public String toString() {
+        return "Check{" + "toAccount:" + toAccount + " Amount:"+amount+" Date:"+date+" Description:"+description+'}';
+    }
+    
 }
