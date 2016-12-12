@@ -5,23 +5,24 @@
  */
 package pl.lodz.uni.math.daoFactory;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author micha
  */
-public class Xml implements ISource{
-    private static Xml instance;
-    private Xml(){}
+public class DB implements ISource{
+    private static DB instance;
+    private DB(){}
     
-    public Xml getInstance(){
+    public static DB getInstance(){
         if(instance==null)
-            instance=new Xml();
+            instance=new DB();
         return instance;
     }
     
-    
     @Override
-    public User getUsers(){
+    public ArrayList<User> getUsers(){
         return null;
     }
 }

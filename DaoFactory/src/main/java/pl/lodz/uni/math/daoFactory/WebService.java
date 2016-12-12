@@ -5,22 +5,24 @@
  */
 package pl.lodz.uni.math.daoFactory;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author micha
  */
-public class DB implements ISource{
-    private static DB instance;
-    private DB(){}
+public class WebService implements ISource{
+    private static WebService instance;
+    private WebService(){}
     
-    public DB getInstance(){
+    public static WebService getInstance(){
         if(instance==null)
-            instance=new DB();
+            instance=new WebService();
         return instance;
     }
     
     @Override
-    public User getUsers(){
+    public ArrayList<User> getUsers(){
         return null;
     }
 }

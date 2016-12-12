@@ -5,22 +5,25 @@
  */
 package pl.lodz.uni.math.daoFactory;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author micha
  */
-public class WebService implements ISource{
-    private static WebService instance;
-    private WebService(){}
+public class Xml implements ISource{
+    private static Xml instance;
+    private Xml(){}
     
-    public WebService getInstance(){
+    public static Xml getInstance(){
         if(instance==null)
-            instance=new WebService();
+            instance=new Xml();
         return instance;
     }
     
+    
     @Override
-    public User getUsers(){
+    public ArrayList<User> getUsers(){
         return null;
     }
 }

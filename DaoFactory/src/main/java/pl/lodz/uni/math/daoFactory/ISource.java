@@ -5,10 +5,12 @@
  */
 package pl.lodz.uni.math.daoFactory;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author micha
  */
 public interface ISource {
-    public User getUsers();
+    public ArrayList<User> getUsers();
 }
