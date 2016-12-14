@@ -23,6 +23,6 @@ public class WebService implements ISource{
     
     @Override
     public ArrayList<User> getUsers(){
-        return null;
+        return new ArrayList<>();
     }
 }

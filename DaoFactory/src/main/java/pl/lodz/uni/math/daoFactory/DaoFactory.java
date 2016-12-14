@@ -16,17 +16,25 @@ public class DaoFactory {
     private Enum source;
 
     public ArrayList<User> selectAllUsers() {
-        ArrayList<User> userList = null;
+        ArrayList<User> userList = new ArrayList<>();
 
-        initializeUsersList(userList);
+        try {
+            userList = initializeUsersList();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
 
         return userList;
     }
 
     public User selectUserById(int userId) {
-        ArrayList<User> userList = null;
+        ArrayList<User> userList = new ArrayList<>();
 
-        initializeUsersList(userList);
+        try {
+            userList = initializeUsersList();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
 
         for (User user : userList) {
             if (user.getId() == userId) {
@@ -40,13 +48,17 @@ public class DaoFactory {
         this.source = Source;
     }
 
-    public void initializeUsersList(ArrayList<User> users) {
-        if (source == Source.DB) {
-            users = DB.getInstance().getUsers();
-        } else if (source == Source.WebService) {
-            users = WebService.getInstance().getUsers();
-        } else if (source == Source.Xml) {
-            users = Xml.getInstance().getUsers();
+    private ArrayList<User> initializeUsersList() throws Exception {
+        if (source == null) {
+            throw new Exception("First set source.");
         }
+        if (source == Source.DB) {
+            return DB.getInstance().getUsers();
+        } else if (source == Source.WebService) {
+            return WebService.getInstance().getUsers();
+        } else if (source == Source.Xml) {
+            return Xml.getInstance().getUsers();
+        }
+        return null;
     }
 }

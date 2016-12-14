@@ -24,6 +24,6 @@ public class Xml implements ISource{
     
     @Override
     public ArrayList<User> getUsers(){
-        return null;
+        return new ArrayList<>();
     }
 }
