@@ -5,11 +5,14 @@
  */
 package pl.lodz.uni.math.daoFactory;
 
+import pl.lodz.uni.math.user.User;
 import java.util.ArrayList;
 import org.easymock.EasyMock;
-import org.junit.BeforeClass;
+import org.easymock.Mock;
 import org.junit.Test;
 import static org.junit.Assert.*;
+//import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
 
 /**
  *
@@ -19,51 +22,76 @@ public class DaoFactoryTest {
 
     public DaoFactoryTest() {
     }
-
-    @BeforeClass
-    public static void SetupMocks() {
-        ArrayList<User> userList = new ArrayList<>();
+    
+    
+    private final ArrayList<User> userList = new ArrayList<>();
+    
+    @Mock
+    Xml xmlMock = EasyMock.createMock(Xml.class);
+    
+    @Mock
+    DB dbMock = EasyMock.createMock(DB.class);
+    
+    @Mock
+    WebService webServiceMock = EasyMock.createMock(WebService.class);
+    
+    {
         userList.add(new User(1, "Jan", "Kowalski"));
         userList.add(new User(2, "Piotr", "Nowak"));
         userList.add(new User(3, "Paweł", "Nowy"));
-
-        Xml xmlMock = EasyMock.createMock(Xml.class);
+        
         EasyMock.expect(xmlMock.getUsers()).andReturn(userList);
         EasyMock.replay(xmlMock);
-
-        DB dbMock = EasyMock.createMock(DB.class);
+        
         EasyMock.expect(dbMock.getUsers()).andReturn(userList);
         EasyMock.replay(dbMock);
-
-        WebService webServiceMock = EasyMock.createMock(WebService.class);
+        
         EasyMock.expect(webServiceMock.getUsers()).andReturn(userList);
         EasyMock.replay(webServiceMock);
     }
-
+    
     @Test
-    public void GetUserByIdWithSourceXmlSuccess() {
-        DaoFactory instance = new DaoFactory();
-        instance.setSourceOfData(Source.Xml);
-        User expected = new User(1, "Jan", "Kowalski");
-        User result = instance.selectUserById(1);
+    public void selectAllUserReturnUserListWithSourceDb(){
+        DaoFactory instance=new DaoFactory();
+        instance.setSourceForTests(dbMock);
+        ArrayList result=null;
+        try{
+            result=instance.selectAllUsers();
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        ArrayList expected=userList;
         assertEquals(expected, result);
     }
-
+    
     @Test
-    public void GetUserByIdWithSourceDbSuccess() {
-        DaoFactory instance = new DaoFactory();
-        instance.setSourceOfData(Source.DB);
-        User expected = new User(2, "Piotr", "Nowak");
-        User result = instance.selectUserById(2);
+    public void selectAllUserReturnUserListWithSourceXml(){
+        DaoFactory instance=new DaoFactory();
+        instance.setSourceForTests(xmlMock);
+        ArrayList result=null;
+        try{
+            result=instance.selectAllUsers();
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        ArrayList expected=userList;
         assertEquals(expected, result);
     }
-
+    
     @Test
-    public void GetUserByIdWithSourceWebServiceSuccess() {
-        DaoFactory instance = new DaoFactory();
-        instance.setSourceOfData(Source.WebService);
-        User expected = new User(3, "Paweł", "Nowy");
-        User result = instance.selectUserById(3);
+    public void selectAllUserReturnUserListWithSourceWebService(){
+        DaoFactory instance=new DaoFactory();
+        instance.setSourceForTests(webServiceMock);
+        ArrayList result=null;
+        try{
+            result=instance.selectAllUsers();
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        ArrayList expected=userList;
         assertEquals(expected, result);
     }
 }

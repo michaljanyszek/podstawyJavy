@@ -5,6 +5,7 @@
  */
 package pl.lodz.uni.math.daoFactory;
 
+import pl.lodz.uni.math.user.User;
 import java.util.ArrayList;
 
 /**

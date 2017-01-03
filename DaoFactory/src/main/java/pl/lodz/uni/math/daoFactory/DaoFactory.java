@@ -5,7 +5,9 @@
  */
 package pl.lodz.uni.math.daoFactory;
 
+import pl.lodz.uni.math.user.User;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
@@ -13,28 +15,32 @@ import java.util.ArrayList;
  */
 public class DaoFactory {
 
-    private Enum source;
+    private ISource source=null;
 
-    public ArrayList<User> selectAllUsers() {
-        ArrayList<User> userList = new ArrayList<>();
+    private final HashMap<Enum, ISource> sources = new HashMap<>();
 
-        try {
-            userList = initializeUsersList();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+    {
+        sources.put(Source.DB, DB.getInstance());
+        sources.put(Source.Xml, Xml.getInstance());
+        sources.put(Source.WebService, WebService.getInstance());
+    }
+
+    public ArrayList<User> selectAllUsers() throws Exception {
+        if (source == null) {
+            throw new Exception("First set source");
         }
+
+        ArrayList<User> userList = source.getUsers();
 
         return userList;
     }
 
-    public User selectUserById(int userId) {
-        ArrayList<User> userList = new ArrayList<>();
-
-        try {
-            userList = initializeUsersList();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+    public User selectUserById(int userId) throws Exception {
+        if (source == null) {
+            throw new Exception("First set source");
         }
+
+        ArrayList<User> userList = source.getUsers();
 
         for (User user : userList) {
             if (user.getId() == userId) {
@@ -45,20 +51,10 @@ public class DaoFactory {
     }
 
     public void setSourceOfData(Enum Source) {
-        this.source = Source;
+        this.source = sources.get(Source);
     }
-
-    private ArrayList<User> initializeUsersList() throws Exception {
-        if (source == null) {
-            throw new Exception("First set source.");
-        }
-        if (source == Source.DB) {
-            return DB.getInstance().getUsers();
-        } else if (source == Source.WebService) {
-            return WebService.getInstance().getUsers();
-        } else if (source == Source.Xml) {
-            return Xml.getInstance().getUsers();
-        }
-        return null;
+    
+    public void setSourceForTests(ISource source){
+        this.source=source;
     }
 }
