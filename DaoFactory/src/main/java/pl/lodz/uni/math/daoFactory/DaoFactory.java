@@ -5,6 +5,11 @@
  */
 package pl.lodz.uni.math.daoFactory;
 
+import pl.lodz.uni.math.sources.DB;
+import pl.lodz.uni.math.sources.WebService;
+import pl.lodz.uni.math.sources.ISource;
+import pl.lodz.uni.math.sources.Source;
+import pl.lodz.uni.math.sources.Xml;
 import pl.lodz.uni.math.user.User;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,48 +18,25 @@ import java.util.HashMap;
  *
  * @author micha
  */
-public class DaoFactory {
+public class DaoFactory implements IDaoFactory{
 
-    private ISource source=null;
+    private static ISource source=null;
+    private HashMap<Enum, ISource> sources = new HashMap<>();
 
-    private final HashMap<Enum, ISource> sources = new HashMap<>();
-
+    public DaoFactory()
     {
         sources.put(Source.DB, DB.getInstance());
         sources.put(Source.Xml, Xml.getInstance());
         sources.put(Source.WebService, WebService.getInstance());
     }
 
-    public ArrayList<User> selectAllUsers() throws Exception {
-        if (source == null) {
-            throw new Exception("First set source");
-        }
-
-        ArrayList<User> userList = source.getUsers();
-
-        return userList;
-    }
-
-    public User selectUserById(int userId) throws Exception {
-        if (source == null) {
-            throw new Exception("First set source");
-        }
-
-        ArrayList<User> userList = source.getUsers();
-
-        for (User user : userList) {
-            if (user.getId() == userId) {
-                return user;
-            }
-        }
-        return null;
-    }
-
-    public void setSourceOfData(Enum Source) {
+    @Override
+    public void setSourceOfData(Source Source) {
         this.source = sources.get(Source);
     }
     
-    public void setSourceForTests(ISource source){
-        this.source=source;
+    @Override
+    public ISource getSource(){
+        return source;
     }
 }

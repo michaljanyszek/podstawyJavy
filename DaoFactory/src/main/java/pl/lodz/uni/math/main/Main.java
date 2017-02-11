@@ -5,12 +5,25 @@
  */
 package pl.lodz.uni.math.main;
 
+import pl.lodz.uni.math.daoFactory.DaoFactory;
+import pl.lodz.uni.math.sources.Source;
+
 /**
  *
  * @author micha
  */
 public class Main {
     public static void main(String[] args){
+        DaoFactory dao = new DaoFactory();
+        
+        dao.setSourceOfData(Source.Xml);
+        dao.getSource().selectUserById(1);
+        
+        dao.setSourceOfData(Source.DB);
+        dao.getSource().selectUserById(1);
+        
+        dao.setSourceOfData(Source.WebService);
+        dao.getSource().selectUserById(1);
         
     }
 }

@@ -3,13 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pl.lodz.uni.math.bank;
+package pl.lodz.uni.math.main;
 
 /**
  *
  * @author micha
  */
 import java.util.Date;
+import pl.lodz.uni.math.bank.Account;
+import pl.lodz.uni.math.bank.Bank;
+import pl.lodz.uni.math.bank.Check;
+import pl.lodz.uni.math.bank.Client;
 
 
 public class Main {
