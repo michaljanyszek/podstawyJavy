@@ -5,27 +5,40 @@
  */
 package pl.lodz.uni.math.bank;
 
+import pl.lodz.uni.math.client.Client;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Stud
  */
 public class Bank {
-    private String bankName;
-    private List<Client> clientList;
-    
+    private final String name;
+    private final ArrayList<Client> clients;
+    private final static Logger LOGGER = Logger.getLogger(Bank.class.getName());
 
-    public Bank(String bankName) {
-        this.bankName = bankName;
-        this.clientList=new ArrayList();
+    public Bank(String name) {
+        this.name = name;
+        clients = new ArrayList<>();
     }
+
     public String getName() {
-        return bankName;
+        return name;
     }
-    public void AddClient(Client client){
-        if(!clientList.contains(client))
-            clientList.add(client);
+
+    public void addClient(Client c) {
+        clients.add(c);
+    }
+
+    public void removeClient(Client c) {
+        clients.remove(c);
+    }
+
+    public void printClients() {
+        LOGGER.info("Clients of bank: " + name);
+        clients.stream().forEach(c -> {
+            c.print();
+        });
     }
 }

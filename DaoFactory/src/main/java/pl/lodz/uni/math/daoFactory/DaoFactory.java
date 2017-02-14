@@ -10,8 +10,6 @@ import pl.lodz.uni.math.sources.WebService;
 import pl.lodz.uni.math.sources.ISource;
 import pl.lodz.uni.math.sources.Source;
 import pl.lodz.uni.math.sources.Xml;
-import pl.lodz.uni.math.user.User;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -20,10 +18,17 @@ import java.util.HashMap;
  */
 public class DaoFactory implements IDaoFactory{
 
+    private static DaoFactory instance=null;
     private static ISource source=null;
     private HashMap<Enum, ISource> sources = new HashMap<>();
 
-    public DaoFactory()
+    public static DaoFactory getInstance(){
+        if(instance==null)
+            instance=new DaoFactory();
+        return instance;
+    }
+    
+    private DaoFactory()
     {
         sources.put(Source.DB, DB.getInstance());
         sources.put(Source.Xml, Xml.getInstance());

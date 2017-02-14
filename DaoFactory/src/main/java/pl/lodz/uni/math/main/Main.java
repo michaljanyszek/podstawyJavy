@@ -14,7 +14,7 @@ import pl.lodz.uni.math.sources.Source;
  */
 public class Main {
     public static void main(String[] args){
-        DaoFactory dao = new DaoFactory();
+        DaoFactory dao = DaoFactory.getInstance();
         
         dao.setSourceOfData(Source.Xml);
         dao.getSource().selectUserById(1);

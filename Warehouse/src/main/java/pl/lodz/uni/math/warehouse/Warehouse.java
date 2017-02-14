@@ -5,6 +5,7 @@
  */
 package pl.lodz.uni.math.warehouse;
 
+import pl.lodz.uni.math.packag.Package;
 import java.util.ArrayList;
 
 /**
@@ -12,7 +13,7 @@ import java.util.ArrayList;
  * @author Comarch
  */
 public class Warehouse {
-    
+
     private final int fieldDepth;
     private final int fieldHeight;
     private final int fieldWidth;
@@ -23,11 +24,11 @@ public class Warehouse {
         this.fieldWidth = fieldWidth;
     }
 
-    public Package getPackageByNumber(String packageNumber){
+    public Package getPackageByNumber(String packageNumber) {
         return null;
     }
-    
-    public ArrayList getAllPackagesByType(Enum TypeOfPackage){
+
+    public ArrayList getAllPackagesByType(Enum TypeOfPackage) {
         return new ArrayList();
     }
 }

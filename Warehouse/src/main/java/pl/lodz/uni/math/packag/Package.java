@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pl.lodz.uni.math.warehouse;
+package pl.lodz.uni.math.packag;
 
 import java.util.Date;
 
@@ -66,8 +66,5 @@ public class Package {
     public void setPriority(int priority) {
         this.priority = priority;
     }
-    
-    
-    
-    
+
 }

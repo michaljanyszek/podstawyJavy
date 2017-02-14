@@ -3,16 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pl.lodz.uni.math.bank;
+package pl.lodz.uni.math.main;
 
 /**
  *
  * @author micha
  */
-public class Common {
-    public static boolean CheckDigit(String number){
-        if(number.length()!=15)
-            return false;        
-        return true;
+public class Main {
+    public static void main(String[] args){
+        
     }
 }
