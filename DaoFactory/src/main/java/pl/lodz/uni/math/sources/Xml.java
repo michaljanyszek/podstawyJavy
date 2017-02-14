@@ -17,7 +17,7 @@ import org.easymock.EasyMock;
  */
 public class Xml implements ISource{
     private static Xml instance;
-    private final User userMock=EasyMock.createMock(User.class);
+    private User userMock=null;
     public static final Logger LOGGER = Logger.getLogger(Xml.class.getName());
     
     private Xml(){}
@@ -30,6 +30,7 @@ public class Xml implements ISource{
     
     @Override
     public List<User> selectAllUsers() {
+        userMock = EasyMock.createMock(User.class);
         List<User> mockList = EasyMock.createMock(ArrayList.class);
         EasyMock.expect(mockList.size()).andReturn(1);
         EasyMock.expect(mockList.get(0)).andReturn(userMock);
@@ -40,6 +41,7 @@ public class Xml implements ISource{
 
     @Override
     public User selectUserById(int id) {
+        userMock = EasyMock.createMock(User.class);
         EasyMock.expect(userMock.getId()).andReturn(id);
         EasyMock.expect(userMock.getFirstName()).andReturn("Mateusz");
         EasyMock.expect(userMock.getLastName()).andReturn("Malinowski");
@@ -48,4 +50,5 @@ public class Xml implements ISource{
         LOGGER.info(userMock.getId() + " " + userMock.getFirstName() + " " + userMock.getLastName());
         return userMock;
     }
+    
 }

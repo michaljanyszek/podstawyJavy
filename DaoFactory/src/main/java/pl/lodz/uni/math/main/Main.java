@@ -25,5 +25,8 @@ public class Main {
         dao.setSourceOfData(Source.WebService);
         dao.getSource().selectUserById(1);
         
+        DaoFactory dao2 = DaoFactory.getInstance();
+        dao2.setSourceOfData(Source.Xml);
+        dao2.getSource().selectUserById(1);
     }
 }
