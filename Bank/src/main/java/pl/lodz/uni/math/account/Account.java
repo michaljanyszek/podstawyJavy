@@ -91,12 +91,12 @@ public class Account {
         LOGGER.info("Rejestracja depozytu zakonczona pozytywnie");
     }
 
-    public void doCheck(Account toAccount, double amount, Date date, String description) {
-        LOGGER.info("Rejestracja czeku z konta " + toAccount.getNumber() + " do konta: " + this.getNumber());
-        Check check = new Check(toAccount, amount, date, description, checkNumber++);
+    public void doCheck(Account fromAccount, double amount, Date date, String description) {
+        LOGGER.info("Rejestracja czeku z konta " + fromAccount.getNumber() + " do konta: " + this.getNumber());
+        Check check = new Check(fromAccount, amount, date, description, checkNumber++);
         transactionHistory.add(check);
         this.balance += amount;
-        toAccount.setBalance(toAccount.getBalance() - amount);
+        fromAccount.setBalance(fromAccount.getBalance() - amount);
         LOGGER.info("Rejestracja czeku zakonczona pozytywnie");
     }
 

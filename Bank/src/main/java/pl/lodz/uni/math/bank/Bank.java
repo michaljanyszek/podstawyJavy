@@ -41,4 +41,8 @@ public class Bank {
             c.print();
         });
     }
+    
+    public ArrayList<Client> getClientList(){
+        return clients;
+    }
 }
